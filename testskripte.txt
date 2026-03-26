@@ -1,0 +1,53 @@
+TESTSKRIPTE — Strobl Telefonassistent
+======================================================
+
+SZENARIO 1: Privatperson mit Wasserschaden (akut)
+--------------------------------------------------
+Hallo, ich hab Wasser im Keller stehen!
+Ja, ein Rohrbruch, das Wasser steht bestimmt 10 Zentimeter hoch.
+Müller, Thomas Müller.
+Hauptstraße 12, 83224 Grassau.
+Ja genau, das steht noch, wir konnten noch nichts machen.
+0171 5553344
+Ja, bitte so schnell wie möglich. Danke!
+
+SZENARIO 2: Versicherung (B2B)
+--------------------------------------------------
+Guten Tag, hier spricht Frau Weber von der Allianz Versicherung.
+Wir haben einen Schadensfall, Wasserschaden in einem versicherten Objekt.
+Die Schadennummer ist AZ-2026-44891.
+Das Objekt befindet sich in der Bergstraße 7, 83209 Prien am Chiemsee.
+Es handelt sich um einen Leitungswasserschaden im Erdgeschoss, Küche und Flur betroffen.
+Der Schaden ist von gestern, das Wasser steht nicht mehr, aber es muss getrocknet werden.
+Sie können mich zurückrufen unter 089 1234567, Durchwahl 442.
+
+SZENARIO 3: Hausverwaltung
+--------------------------------------------------
+Hallo, hier ist die Hausverwaltung Berger, mein Name ist Kraus.
+Wir verwalten eine Wohnanlage und haben in einer Einheit Schimmelbefall festgestellt.
+Das ist in der Seestraße 15, 83209 Prien am Chiemsee, Wohnung im 2. OG.
+Der Schimmel ist an der Außenwand im Schlafzimmer, schon großflächig.
+Nicht akut, aber wir brauchen zeitnah eine Begutachtung und ein Angebot.
+Können Sie sich bei mir melden? 08051 98877, Herr Kraus.
+
+SZENARIO 4: Allgemeine Frage (kein Schaden)
+--------------------------------------------------
+Hallo, ich wollte mal fragen was Sie genau anbieten.
+Machen Sie auch Renovierungen? Also zum Beispiel Bad neu fliesen?
+Ok verstehe. Und wie groß ist Ihr Einsatzgebiet?
+Alles klar, danke für die Info!
+
+SZENARIO 5: Spam / Werbeanruf
+--------------------------------------------------
+Guten Tag, ich rufe an von der Firma TeleStar. Wir haben ein tolles Angebot für eine neue Telefonanlage.
+Aber es ist wirklich ein super Angebot, soll ich Ihnen mal die Details schicken?
+Na gut, dann nicht. Tschüss.
+
+SZENARIO 6: Brandschaden
+--------------------------------------------------
+Hallo, bei uns hat es letzte Nacht im Dachgeschoss gebrannt.
+Die Feuerwehr war da und hat gelöscht, aber der Dachstuhl ist schwer beschädigt.
+Schmidt, Andrea Schmidt. Rosenweg 3, 83278 Traunstein.
+Das Gebäude ist erstmal nicht bewohnbar, die Feuerwehr hat das so gesagt.
+0176 8899001
+Ja, es eilt wirklich. Bitte melden Sie sich so schnell wie möglich.

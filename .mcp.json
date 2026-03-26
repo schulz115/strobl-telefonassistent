@@ -1,0 +1,25 @@
+{
+  "mcpServers": {
+    "n8n-mcp": {
+      "type": "stdio",
+      "command": "node",
+      "args": [
+        "C:/Users/marge/Documents/n8n-mcp/dist/mcp/index.js"
+      ],
+      "env": {
+        "N8N_API_URL": "https://dev.mh-n8n.de",
+        "N8N_API_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI3Njc1NjRiNC0wOTVhLTQ2ZTUtODliYi0wYTY0ODAxMGZiMDUiLCJpc3MiOiJuOG4iLCJhdWQiOiJwdWJsaWMtYXBpIiwiaWF0IjoxNzY5NTQ1NjA1fQ.FcfPkEQ34iwecSMnU6zPcJAX1Yd9ig2QS4A5SstSFYA"
+      }
+    },
+    "elevenlabs": {
+      "type": "stdio",
+      "command": "uvx",
+      "args": [
+        "elevenlabs-mcp"
+      ],
+      "env": {
+        "ELEVENLABS_API_KEY": "sk_75d59e0722f2d91c00865560aee237a6bac982a0a5afd6e9"
+      }
+    }
+  }
+}
