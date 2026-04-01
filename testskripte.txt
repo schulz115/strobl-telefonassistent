@@ -1,110 +1,118 @@
-TESTSKRIPTE — Strobl Telefonassistent (Demo)
-Basierend auf: Fallbeispiele KI.docx vom Kunden
-Projektleiter in der DB: Thomas Maier, Stefan Huber, Claudia Berger, Michael Wagner, Sandra Klein
-Bestandskunden in der DB: Allianz (Weber), HUK-COBURG (Baumann), HV Berger (Kraus), ERGO (Schuster), Immo Chiemsee (Lechner)
+TESTSKRIPTE — Strobl Telefonassistent (Demo Freitag)
+PROJEKTE in DB: 8 Einträge (260042 bis 260133), davon 2 ohne PL (260078, 260133)
+BESTANDSKUNDEN in DB: Allianz (Weber), HUK-COBURG (Baumann), HV Berger (Kraus), ERGO (Schuster), Immo Chiemsee (Lechner)
 ======================================================
+Hinweis: Birte stellt Fragen in eigener Reihenfolge. Nicht alle Zeilen werden gebraucht — nur antworten was Birte fragt.
 
 FALL 1: REKLAMATION
 ======================================================
 
-Szenario 1a: Reklamation, Projektleiter bekannt
-Erwartung: Birte fragt nach Auftragsnummer, erkennt PL "Maier", versucht weiterzuleiten.
+Szenario 1a: Auftragsnummer bekannt, PL in DB → Birte weiß Bescheid
+Erwartung: Birte nennt proaktiv Projektdetails + PL nach Auftragsnummer-Lookup.
 --------------------------------------------------
-Guten Tag, mein Name ist Hoffmann. Ich möchte eine Reklamation melden.
-Ja, die Auftragsnummer ist 2026-0042.
-Es geht um die Trocknung bei mir zu Hause. Der Monteur hat die Fußbodenheizung komplett aufgedreht und ist dann gefahren. Zwei Wochen lang lief die auf Vollgas.
-Jetzt habe ich eine enorme Heizkostenrechnung und will die erstattet haben.
-Der zuständige Projektleiter war Herr Maier.
-Ja bitte, verbinden Sie mich.
-0176 4455667
+Guten Tag, mein Name ist Hoffmann. Ich habe eine Reklamation.
+Die Auftragsnummer ist 260042.
+Genau, das Projekt. Der Monteur hat die Fußbodenheizung aufgedreht und zwei Wochen lief die auf Vollgas. Jetzt habe ich eine enorme Heizkostenrechnung.
+Ich will die Kosten erstattet haben.
+Ja bitte, verbinden Sie mich mit dem Projektleiter.
+Meine Nummer ist 0176 4455667.
 
-Szenario 1b: Reklamation, Projektleiter unbekannt
-Erwartung: Birte nimmt alle Daten auf, sichert Rückruf zu.
+Szenario 1b: Auftragsnummer bekannt, KEIN PL in DB → Birte fragt nach
+Erwartung: Birte findet Projekt, bemerkt fehlenden PL, fragt nach.
 --------------------------------------------------
-Hallo, ich will mich beschweren. Bei mir wurde letzte Woche getrocknet und danach war der Parkettboden komplett beschädigt.
-Die Auftragsnummer müsste 2026-0078 sein.
-Nein, ich weiß leider nicht wer der zuständige Projektleiter war.
-Hoffmann, Stefan Hoffmann. Bahnhofstraße 5, 83209 Prien.
+Hallo, ich will mich beschweren. Bei der Trocknung wurde mein Parkettboden beschädigt.
+Die Auftragsnummer ist 260078.
+Der hieß glaube ich Wagner. Michael Wagner.
+Hoffmann, Stefan Hoffmann.
+Bahnhofstraße 5, 83209 Prien.
 0176 4455667
 Ja bitte, rufen Sie mich zurück.
 
 FALL 2: ALLGEMEINE RÜCKFRAGE ZU AUFTRAG
 ======================================================
 
-Szenario 2a: Rückfrage, Auftragsnummer bekannt
-Erwartung: Birte notiert die Frage und sichert Rückruf zu.
+Szenario 2a: Auftragsnummer bekannt → Birte kennt Projektdetails
+Erwartung: Birte nennt proaktiv Projektdetails, kann Frage nicht selbst beantworten, sichert Rückruf zu.
 --------------------------------------------------
-Hallo, ich habe eine Frage zu meinem Auftrag. Die Nummer ist 2026-0089.
-Ich wollte fragen, ob die Freigabe von der Versicherung schon erteilt wurde. Und ob Sie schon mit der Terminierung anfangen können.
-Meier, Hans Meier. 0171 2233445.
+Hallo, ich habe eine Frage zu meinem Auftrag.
+Die Nummer ist 260089.
+Ich wollte fragen, ob die Freigabe von der Versicherung schon erteilt wurde.
+Und ob Sie schon mit der Terminierung anfangen können.
+Meier, Hans Meier.
+0171 2233445.
 Danke, ich warte auf den Rückruf.
 
-Szenario 2b: Rückfrage, keine Auftragsnummer
-Erwartung: Birte erfasst Kontaktdaten, sichert Rückruf zu.
+Szenario 2b: Keine Auftragsnummer, aber Adresse → Birte findet trotzdem
+Erwartung: Birte sucht nach Adresse und findet das Projekt. DAS ist der Aha-Effekt.
 --------------------------------------------------
 Guten Tag, bei mir wurde vor drei Wochen ein Wasserschaden begutachtet, aber ich habe seitdem nichts mehr gehört.
 Nein, die Auftragsnummer habe ich leider nicht.
-Das war in der Rosenstraße 8, 83224 Grassau.
-Bauer, Sabine Bauer. 0151 7788990.
-Ich wollte fragen, ob das Angebot schon an die Versicherung geschickt wurde.
+Das war in der Rosenstraße 8 in Grassau.
+Ja genau, das ist es!
+Bauer, Sabine Bauer.
+0151 7788990.
+Können Sie mir sagen wie der Stand ist?
 
 FALL 3: STROMPROTOKOLL
 ======================================================
 
-Szenario 3a: Auftraggeber fragt nach Stromprotokoll
-Erwartung: Birte erkennt Auftraggeber (Firma), nimmt Anfrage auf, sagt Weiterleitung zu.
+Szenario 3a: Auftraggeber fragt → Birte kennt Auftraggeber aus DB
+Erwartung: Birte erkennt Bestandskunde + weiß aus Projektdaten wer Auftraggeber ist.
 --------------------------------------------------
-Guten Tag, hier ist Frau Weber von der Allianz Versicherung.
-Wir brauchen das Stromprotokoll zum Auftrag 2026-0055.
-Ja, wir sind der Auftraggeber für diesen Schadensfall.
-Können Sie uns das Protokoll per E-Mail an weber@allianz-test.de schicken?
+Guten Tag, hier ist Herr Kraus von der Hausverwaltung Berger.
+Wir brauchen das Stromprotokoll zum Auftrag 260055.
+Ja genau, wir sind der Auftraggeber.
+An kraus@berger-hv.de bitte.
+Danke, auf Wiederhören.
 
-Szenario 3b: Mieter fragt nach Stromprotokoll
-Erwartung: Birte erkennt Mieter, lehnt Weitergabe ab, verweist an Auftraggeber.
+Szenario 3b: Mieter fragt → Birte lehnt ab und nennt Auftraggeber aus DB
+Erwartung: Birte lehnt ab, nennt dem Mieter den Auftraggeber (HV Berger) aus den Projektdaten.
 --------------------------------------------------
 Hallo, ich bin der Mieter der Wohnung in der Seestraße 15 in Prien.
-Bei mir wurde letzten Monat getrocknet und ich bräuchte das Stromprotokoll für meine Stromrechnung.
+Ich bräuchte das Stromprotokoll. Die Auftragsnummer ist 260055.
 Ich bin der Mieter, ja.
-An die Hausverwaltung? Welche ist denn zuständig?
+An welche Hausverwaltung soll ich mich wenden?
 Alles klar, danke für die Info.
 
 FALL 4: RÜCKFRAGEN ZU RECHNUNG UND ANGEBOT
 ======================================================
 
-Szenario 4a: Rechnungsnummer und Projektleiter bekannt
-Erwartung: Birte erkennt PL "Huber", versucht weiterzuleiten.
+Szenario 4a: Auftragsnummer bekannt → Birte kennt PL automatisch
+Erwartung: Birte schlägt Auftrag nach, kennt den PL ohne dass Anrufer ihn nennen muss.
 --------------------------------------------------
 Guten Tag, ich habe eine Frage zu einer Rechnung.
-Die Rechnungsnummer ist RE-2026-1234.
-Der Projektleiter war Herr Huber.
+Die gehört zum Auftrag 260042.
 Es geht um eine Position auf der Rechnung die ich nicht nachvollziehen kann.
-Ja, verbinden Sie mich bitte mit Herrn Huber.
+Ja, verbinden Sie mich bitte mit dem Projektleiter.
+Meine Nummer ist 0170 9988776.
 
-Szenario 4b: Keine Nummer, kein Projektleiter
-Erwartung: Birte nimmt Daten auf, sichert Rückruf zu.
+Szenario 4b: Keine Nummer, aber Adresse → Birte findet Projekt
+Erwartung: Birte sucht nach Adresse Bergstraße 12, findet Projekt 260101.
 --------------------------------------------------
 Hallo, ich habe ein Angebot von Ihnen bekommen, aber ich verstehe eine Position nicht.
-Nein, die Angebotsnummer habe ich gerade nicht zur Hand.
-Es ging um eine Trocknung in der Bergstraße 12 in Traunstein.
-Den Projektleiter weiß ich leider nicht.
-Fischer, Martina Fischer. 08051 334455.
+Nein, die Nummer habe ich gerade nicht zur Hand.
+Es ging um eine Schimmelbeseitigung in der Bergstraße 12 in Traunstein.
+Ja genau, das ist es!
+Fischer, Martina Fischer.
+08051 334455.
 Ja bitte, lassen Sie mich zurückrufen.
 
 BONUS: BESTANDSKUNDE
 ======================================================
 
-Szenario 5a: Bestandskunde erkannt
-Erwartung: Birte erkennt Hausverwaltung Berger als Bestandskunde, versucht direkt zu Herrn Strobl weiterzuleiten.
+Szenario 5a: Bestandskunde erkannt → Weiterleitung
+Erwartung: Birte erkennt HV Berger sofort als Bestandskunde.
 --------------------------------------------------
 Guten Tag, hier ist Herr Kraus von der Hausverwaltung Berger.
 Ich müsste dringend mit Herrn Strobl persönlich sprechen.
 Es geht um die Wohnanlage in der Seestraße, wir haben dort ein akutes Problem.
 
-Szenario 5b: Privatperson, Standardabfrage
-Erwartung: Birte fragt nach Auftragsnummer, nimmt Daten auf.
+Szenario 5b: Privatperson ohne alles → Standardabfrage
+Erwartung: Birte fragt nach Auftragsnummer, nimmt Kontaktdaten auf.
 --------------------------------------------------
 Hallo, ich wollte nachfragen ob mein Auftrag schon bearbeitet wird.
 Nein, die Auftragsnummer habe ich leider nicht.
-Schulze, Peter Schulze. Dorfstraße 3, 83278 Traunstein.
+Dorfstraße 3, 83278 Traunstein.
+Schulze, Peter Schulze.
 0170 1122334
 Können Sie herausfinden wie der Stand ist?
