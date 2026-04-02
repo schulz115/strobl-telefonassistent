@@ -259,6 +259,50 @@ async function main() {
   const totalPassed = results.filter(r => r.status === 'done').reduce((sum, r) => sum + r.passed, 0);
   const totalCriteria = results.filter(r => r.status === 'done').reduce((sum, r) => sum + r.total, 0);
   console.log(`\nGesamt: ${totalPassed}/${totalCriteria} Kriterien bestanden`);
+
+  // Regression: Ergebnisse in JSON-Datei speichern
+  const fs = require('fs');
+  const historyFile = 'test-history.json';
+  let history = [];
+  try { history = JSON.parse(fs.readFileSync(historyFile, 'utf8')); } catch {}
+
+  const run = {
+    timestamp: new Date().toISOString(),
+    totalPassed,
+    totalCriteria,
+    scenarios: results.map(r => ({
+      id: r.id,
+      name: r.name,
+      status: r.status,
+      passed: r.passed || 0,
+      total: r.total || 0,
+      error: r.error || null
+    }))
+  };
+  history.push(run);
+  fs.writeFileSync(historyFile, JSON.stringify(history, null, 2));
+  console.log(`\nErgebnisse gespeichert in ${historyFile} (Run #${history.length})`);
+
+  // Regression-Check: Vergleich mit letztem Run
+  if (history.length >= 2) {
+    const prev = history[history.length - 2];
+    console.log(`\nREGRESSION vs. Run #${history.length - 1} (${prev.timestamp.substring(0, 16)}):`);
+    const diff = totalPassed - prev.totalPassed;
+    if (diff > 0) console.log(`  \u2705 +${diff} Kriterien besser (${prev.totalPassed}/${prev.totalCriteria} → ${totalPassed}/${totalCriteria})`);
+    else if (diff < 0) console.log(`  \u26A0\uFE0F ${diff} Kriterien schlechter! (${prev.totalPassed}/${prev.totalCriteria} → ${totalPassed}/${totalCriteria})`);
+    else console.log(`  \u2796 Gleich (${totalPassed}/${totalCriteria})`);
+
+    // Pro Szenario
+    for (const curr of run.scenarios) {
+      const old = prev.scenarios.find(s => s.id === curr.id);
+      if (!old || old.status !== 'done' || curr.status !== 'done') continue;
+      if (curr.passed < old.passed) {
+        console.log(`  \u26A0\uFE0F ${curr.id}: ${old.passed}/${old.total} → ${curr.passed}/${curr.total} — REGRESSION`);
+      } else if (curr.passed > old.passed) {
+        console.log(`  \u2705 ${curr.id}: ${old.passed}/${old.total} → ${curr.passed}/${curr.total} — verbessert`);
+      }
+    }
+  }
 }
 
 main();

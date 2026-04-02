@@ -1,0 +1,89 @@
+[
+  {
+    "timestamp": "2026-04-01T12:12:08.162Z",
+    "totalPassed": 16,
+    "totalCriteria": 29,
+    "scenarios": [
+      {
+        "id": "1a",
+        "name": "Reklamation, Auftragsnummer → Birte weiß PL + Adresse",
+        "status": "done",
+        "passed": 2,
+        "total": 3,
+        "error": null
+      },
+      {
+        "id": "1b",
+        "name": "Reklamation, Projekt ohne PL → Birte lernt dazu",
+        "status": "done",
+        "passed": 4,
+        "total": 4,
+        "error": null
+      },
+      {
+        "id": "2a",
+        "name": "Rückfrage, Auftragsnummer → Birte kennt Projektdetails",
+        "status": "done",
+        "passed": 2,
+        "total": 3,
+        "error": null
+      },
+      {
+        "id": "2b",
+        "name": "Keine Auftragsnr, aber Adresse → Birte findet trotzdem ← AHA",
+        "status": "done",
+        "passed": 0,
+        "total": 3,
+        "error": null
+      },
+      {
+        "id": "3a",
+        "name": "Stromprotokoll, Auftraggeber → Birte weiß AG aus DB",
+        "status": "done",
+        "passed": 2,
+        "total": 3,
+        "error": null
+      },
+      {
+        "id": "3b",
+        "name": "Stromprotokoll, Mieter → Birte nennt AG aus DB",
+        "status": "done",
+        "passed": 1,
+        "total": 3,
+        "error": null
+      },
+      {
+        "id": "4a",
+        "name": "Rechnung, Auftragsnummer → Birte kennt PL automatisch",
+        "status": "done",
+        "passed": 1,
+        "total": 2,
+        "error": null
+      },
+      {
+        "id": "4b",
+        "name": "Angebot, nichts bekannt → Adress-Lookup",
+        "status": "done",
+        "passed": 0,
+        "total": 3,
+        "error": null
+      },
+      {
+        "id": "5a",
+        "name": "Bestandskunde HV Berger → offene Projekte",
+        "status": "done",
+        "passed": 1,
+        "total": 2,
+        "error": null
+      },
+      {
+        "id": "5b",
+        "name": "Privatperson, Standardabfrage",
+        "status": "done",
+        "passed": 3,
+        "total": 3,
+        "error": null
+      }
+    ]
+  }
+]
